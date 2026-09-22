@@ -1,1 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Savory Bistro | Fine Dining & Delights</title>
+    <style>
+        /* --- RESET & BASE STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #c5a880; /* Elegant Gold */
+            --dark-color: #1a1a1a;    /* Charcoal Black */
+            --light-color: #f9f9f9;   /* Soft Off-White */
+            --text-muted: #666;
+        }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--dark-color);
+            line-height: 1.6;
+            background-color: #ffffff;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #b0936d;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 10px auto 0;
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            background-color: var(--dark-color);
+            color: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 25px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- HERO SECTION --- */
+        #hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://unsplash.com') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #ddd;
+        }
+
+        /* --- ABOUT SECTION --- */
+        #about {
+            background-color: var(--light-color);
+        }
+
+        .about-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text, .about-img {
+            flex: 1;
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* --- MENU SECTION --- */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px dashed #ddd;
+        }
+
+        .item-details h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .item-details p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .item-price {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        /* --- CONTACT SECTION --- */
+        #contact {
+            background-color: var(--dark-color);
+            color: white;
+        }
+
+        #contact .section-title {
+            color: white;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .contact-box h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #111;
+            color: #888;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9rem;
+            border-top: 1px solid #222;
+        }
+
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 768px) {
+            .about-wrapper {
+                flex-direction: column;
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .nav-links {
+                display: none; /* Can be expanded later into a burger menu */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation Bar -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">SAVORY<span>BISTRO</span></div>
+                <ul class="nav-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero / Welcome Section -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Experience Exquisite Dining</h1>
+                <p>Crafting memorable culinary experiences with fresh, locally-sourced ingredients.</p>
+                <a href="#menu" class="btn">View Our Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="about-wrapper">
+                <div class="about-text">
+                    <h2 class="section-title" style="text-align: left; justify-content: flex-start;">Our Story</h2>
+                    <p>Founded in 2018, The Savory Bistro has quickly become a landmark for food enthusiasts. Our chefs combine traditional culinary frameworks with innovative techniques to give you a flavor profile that is both nostalgic and completely new.</p>
+                    <p style="margin-top: 15px;">We guarantee high-quality hospitality, a warm ambiance, and meals prepared with unparalleled passion.</p>
+                </div>
+                <div class="about-img">
+                    <img src="https://unsplash.com" alt="Restaurant Interior Decor">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu">
+        <div class="container">
+            <h2 class="section-title">Our Signature Dishes</h2>
+            <div class="menu-grid">
+                
+                <!-- Item 1 -->
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Truffle Butter Ribeye</h3>
+                        <p>Prime aged ribeye served with wild mushrooms.</p>
+                    </div>
+                    <div class="item-price">$38</div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Pan-Seared Sea Bass</h3>
+                        <p>Accompanied by saffron risotto and asparagus.</p>
+                    </div>
+                    <div class="item-price">$32</div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Artisanal Burrata Salad</h3>
+                        <p>Heirloom tomatoes, fresh basil, and balsamic glaze.</p>
+                    </div>
+                    <div class="item-price">$16</div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Wild Mushroom Pappardelle</h3>
+                        <p>Handmade pasta tossed in creamy white wine sauce.</p>
+                    </div>
+                    <div class="item-price">$24</div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Decadent Chocolate Lava Cake</h3>
+                        <p>Served with a scoop of Tahitian vanilla bean ice cream.</p>
+                    </div>
+                    <div class="item-price">$12</div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="menu-item">
